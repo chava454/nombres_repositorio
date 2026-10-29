@@ -64,9 +64,34 @@ La semilla aplicada al proyecto es:
 
 Esto se usa para controlar la aleatoriedad del shuffle, la partición del conjunto de validación y la inicialización de pesos.
 
-## 6. Análisis crítico de resultados
+## 6. Resultados y análisis
 
-El análisis cuantitativo debe completarse después de ejecutar el entrenamiento con la semilla 76. Registre aquí la pérdida y accuracy finales de entrenamiento y validación, el accuracy de prueba y las confusiones principales de la matriz. No se deben afirmar resultados antes de generarlos.
+Resultados registrados con semilla 76, ocho épocas, lote de 64, Adam (tasa de aprendizaje 0.001) y CrossEntropyLoss:
+
+| Época | Pérdida train | Accuracy train | Pérdida validación | Accuracy validación |
+|---:|---:|---:|---:|---:|
+| 1 | 1.4957 | 0.4576 | 1.2839 | 0.5414 |
+| 2 | 1.1588 | 0.5851 | 1.1314 | 0.5944 |
+| 3 | 1.0307 | 0.6338 | 1.0394 | 0.6321 |
+| 4 | 0.9549 | 0.6634 | 0.9706 | 0.6619 |
+| 5 | 0.8919 | 0.6872 | 0.9267 | 0.6710 |
+| 6 | 0.8455 | 0.7059 | 0.8623 | 0.7011 |
+| 7 | 0.8023 | 0.7204 | 0.8860 | 0.6896 |
+| 8 | 0.7742 | 0.7264 | 0.8467 | 0.7030 |
+
+La accuracy final en el conjunto de prueba fue **0.7337 (73.37 %)**. La pérdida de entrenamiento disminuyó en todas las épocas y la accuracy de entrenamiento aumentó. La validación también mejoró en general; la caída temporal de accuracy y el aumento de pérdida en la época 7 sugieren una señal moderada de sobreajuste, aunque ambos valores se recuperan en la época 8. La diferencia final de accuracy entre entrenamiento y validación es 0.0234 (2.34 puntos porcentuales), por lo que no se observa una brecha grande al final del entrenamiento. La matriz de confusión permite inspeccionar qué pares de clases son más difíciles; conviene comentarlos directamente a partir de la figura.
+
+### Curvas de aprendizaje
+
+![Curvas de pérdida y accuracy](outputs/loss_accuracy.png)
+
+### Matriz de confusión
+
+![Matriz de confusión en el conjunto de prueba](outputs/confusion_matrix.png)
+
+### Ejemplos del dataset
+
+![Ejemplos de CIFAR-10 con sus etiquetas](outputs/dataset_samples.png)
 
 ## 7. Cómo ejecutar
 
